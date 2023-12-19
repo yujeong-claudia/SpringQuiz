@@ -37,4 +37,6 @@ public class Lesson03Quiz01RestController {
 			@RequestParam(value = "area") int area, @RequestParam(value = "price") int price){
 		return realEstateBO.getRealEstateListByAreaAndPrice(area, price);
 	}
+	
+	
 }
