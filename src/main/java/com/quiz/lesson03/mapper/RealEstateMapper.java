@@ -14,4 +14,7 @@ public interface RealEstateMapper {
 	
 	// input:rentPrice		output: List<RealEstate> ([비워져있거나] or 채워져있거나 , null은 아님)
 	public List<RealEstate> selectRealEstateListByRentPrice(int rentPrice);
+
+	// input:area, price	output: List<RealEstate> [] or 채워져있다.
+	public List<RealEstate> selectRealEstateListByAreaAndPrice(int area, int price);
 }

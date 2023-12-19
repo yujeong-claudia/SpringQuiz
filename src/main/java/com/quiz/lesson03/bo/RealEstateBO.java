@@ -23,4 +23,9 @@ public class RealEstateBO {
 	public List<RealEstate> getRealEstateListByRentPrice(int rentPrice) {
 		return realEstateMapper.selectRealEstateListByRentPrice(rentPrice);
 	};
+	
+	// input:area, price	output: List<RealEstate> [] or 채워져있다.
+	public List<RealEstate> getRealEstateListByAreaAndPrice(int area, int price) {
+		return realEstateMapper.selectRealEstateListByAreaAndPrice(area, price);
+	}
 }
