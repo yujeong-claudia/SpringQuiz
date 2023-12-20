@@ -40,8 +40,12 @@ public interface RealEstateMapper {
 			@Param("rentPrice") Integer rentPrice
 			);
 	
-	public int updateRealEstateByIdTypePrice(
+	// input: id, type, price (3개의 파라미터)  output: 성공한 행의 개수라서 int를 리턴
+	public int updateRealEstateById(
 			@Param("id") int id, 
 			@Param("type") String type, 
 			@Param("price") int price);
+	
+	// input: id 	output: int 성공한 행의 개수
+	public int deleteRealEstateById(int id);
 }

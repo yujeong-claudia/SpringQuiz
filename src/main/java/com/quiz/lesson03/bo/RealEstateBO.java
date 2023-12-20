@@ -43,8 +43,13 @@ public class RealEstateBO {
 		return realEstateMapper.insertRealEstateAsField(realtorId, address, area, type, price, rentPrice);
 	}
 	
-	//updateRealEstateBO
-	public int updateRealEstateByIdTypePrice(int id, String type, int price) {
-		return realEstateMapper.updateRealEstateByIdTypePrice(id, type, price);
+	// input: id, type, price (3개의 파라미터)  output: 성공한 행의 개수라서 int를 리턴
+	public int updateRealEstateById(int id, String type, int price) {
+		return realEstateMapper.updateRealEstateById(id, type, price);
+	}
+	
+	// input: id 	output: int 성공한 행의 개수
+	public int deleteRealEstateById(int id) {
+		return realEstateMapper.deleteRealEstateById(id);
 	}
 }

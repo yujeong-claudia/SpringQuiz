@@ -117,7 +117,7 @@
  		)
  	</insert>
  	
- 	<update id="updateRealEstateByIdTypePrice" parameterType="map">
+ 	<update id="updateRealEstateById" parameterType="map">
  		UPDATE `real_estate`
  		SET
  			`type` = #{type}
@@ -126,4 +126,12 @@
  		WHERE
  			`id` = #{id}	
  	</update>
+ 	
+ 	<delete id="deleteRealEstateById" parameterType="int">
+ 		DELETE
+ 		FROM
+ 			`real_estate`
+ 		WHERE
+ 			`id` = #{id}	
+ 	</delete>
  </mapper>
