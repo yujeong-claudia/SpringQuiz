@@ -95,7 +95,8 @@
  	<insert id="insertRealEstateAsField" parameterType="map">
  			INSERT INTO `real_estate`
  		(
-			`address`
+ 			`realtorId`
+			,`address`
 			,`area`
 			,`type`
 			,`price`
@@ -105,6 +106,7 @@
  		)
  			VALUES
  		(
+ 			#{realtorId}
  			, #{address}
  			, #{area}
  			, #{type}
@@ -114,4 +116,14 @@
  			, NOW()
  		)
  	</insert>
+ 	
+ 	<update id="updateRealEstateByIdTypePrice" parameterType="map">
+ 		UPDATE `real_estate`
+ 		SET
+ 			`type` = #{type}
+ 			,`price` = #{price}
+ 			,`createdAt` = NOW()
+ 		WHERE
+ 			`id` = #{id}	
+ 	</update>
  </mapper>
