@@ -12,7 +12,7 @@ public class SellerBO {
 	@Autowired
 	private SellerMapper sellerMapper;
 	
-	// input: 파라미터	output:x
+	// input: 파라미터		output:x
 	public void addSeller(String nickname, String profileImageUrl, double temperature) {
 		sellerMapper.insertSeller(nickname, profileImageUrl, temperature);
 	}
@@ -20,5 +20,10 @@ public class SellerBO {
 	// input: x 	output: Seller(있거나 or null)
 	public Seller getLatestSeller() {
 		return sellerMapper.selectLatestSeller();
+	}
+	
+	// input:id 	output:Seller(or null)
+	public Seller getSellerById(int id) {
+		return sellerMapper.selectSellerById(id);
 	}
 }
