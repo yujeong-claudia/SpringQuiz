@@ -12,13 +12,13 @@ public class RealtorBO {
 	@Autowired
 	private RealtorMapper realtorMapper;
 	
-	// int: Realtor realtor 	output: X
+	// int: Realtor 	output: X
 	public void addRealtor(Realtor realtor) {
 		realtorMapper.insertRealtor(realtor);
 	}
 	
-	// int: X 	 output: Realtor realtor
-	public Realtor getLatestRealtor() {
-		return realtorMapper.selectLatestRealtor();
+	// int: id 	 output: Realtor
+	public Realtor getRealtorById(int id) {
+		return realtorMapper.selectRealtorById(id);
 	}
 }

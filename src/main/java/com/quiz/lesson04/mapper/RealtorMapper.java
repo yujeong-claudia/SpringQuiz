@@ -7,7 +7,9 @@ import com.quiz.lesson04.domain.Realtor;
 @Repository
 public interface RealtorMapper {
 	
+	// int: Realtor 	output: X
 	public void insertRealtor(Realtor realtor);
 	
-	public Realtor selectLatestRealtor();
+	// int: id 	 output: Realtor
+	public Realtor selectRealtorById(int id);
 }

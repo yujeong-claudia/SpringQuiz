@@ -27,7 +27,7 @@
  		
  	</insert>
  	
- 	<select id="selectLatestRealtor" resultType="com.quiz.lesson04.domain.Realtor">
+ 	<select id="selectRealtorById" resultType="com.quiz.lesson04.domain.Realtor">
  		SELECT 
  			`id`
  			,`office`
@@ -38,7 +38,7 @@
 			,`updatedAt`
 		FROM
 			`realtor`
-		ORDER BY `id` DESC
-		LIMIT 1;			
+		WHERE `id` = #{id}
+	
  	</select>
  </mapper>

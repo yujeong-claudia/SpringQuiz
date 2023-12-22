@@ -18,34 +18,31 @@ public class Lesson04Quiz02Controller {
 	@Autowired
 	private RealtorBO realtorBO;
 	
-	// url : http://localhost/lesson04/quiz02/add_realtor_view
+	// url : http://localhost/lesson04/quiz02/add-realtor-view
 	// 공인중개사 추가
-	@GetMapping("add_realtor_view")
+	@GetMapping("add-realtor-view")
 	public String addRealtorView() {
-		return "/lesson04/addRealtor";
+		return "lesson04/addRealtor";
 	}
 	
-	// 방금 가입된 학생 화면 & DB insert
-	// action : http://localhost/lesson04/quiz02/add_realtor
-	@PostMapping("add_realtor")
+	// 방금 추가된 데이터를 뿌려주는 화면 & DB insert
+	// action : http://localhost/lesson04/quiz02/add-realtor
+	@PostMapping("add-realtor")
 	public String addRealtor(
 			@ModelAttribute Realtor realtor,
 			Model model) { // 태그의 name 속성파라미터와 이름이 같은 필드에 매핑
 		
-		// DB에 insert
+		// DB에서 방금 추가된 pk받아옴 => realtor에 세팅 (select)
 		realtorBO.addRealtor(realtor);
 		
-		// DB에서 방금 가입된 사용자 select
-		int id = realtor.getId();
-		
-		// selectById
-		realtor = realtorBO.getLatestRealtor();
+		// realtor에 세팅된 id로 객체 다시 조회(방금 추가된) selectById
+		Realtor latestRealtor = realtorBO.getRealtorById(realtor.getId());
 		
 		// Model 객체에 담는다. (jsp에서 사용하도록)
-		model.addAttribute("result", realtor);
+		model.addAttribute("result", latestRealtor);
 		model.addAttribute("title", "공인중개사 정보");
 		
-		// 화면 뿌리기 => 테이블로 뿌리기
-		return "/lesson04/afterAddRealtor";
+		// 화면 뿌리기 => 테이블로 뿌리기 jsp화면으로 이동
+		return "lesson04/afterAddRealtor";
 	}
 }
