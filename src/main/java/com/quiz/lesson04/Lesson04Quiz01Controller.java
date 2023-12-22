@@ -43,7 +43,7 @@ public class Lesson04Quiz01Controller {
 	// http://localhost/lesson04/quiz01/seller-info-view
 	// http://localhost/lesson04/quiz01/seller-info-view?id=2
 	@GetMapping("/seller-info-view")
-	public String sellerInfoView(
+	public String sellerInfoView(	//null일수도 있고 아닐수도 있다. 그래서 Integer
 			@RequestParam(value = "id", required = false) Integer id,
 			Model model) { // Model: view 화면에 데이터를 넘겨주는 객체
 		// DB select(최신 가입자)
