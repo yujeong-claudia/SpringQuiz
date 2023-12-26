@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/lesson05/quiz02")
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Lesson05Quiz02Controller {
 	
 	// url: http://localhost/lesson05/quiz02/1
-	@RequestMapping("/1")
+	@GetMapping("/1")
 	public String quiz02_1(Model model) {
 		
 		List<String> musicRanking = new ArrayList<>();
@@ -29,9 +30,9 @@ public class Lesson05Quiz02Controller {
 		return "lesson05/quiz02-1";
 	}
 	
-	// url: http://localhost/lesson05/quiz02/2
-		@RequestMapping("/2")
-		public String quiz02_2(Model model) {
+	// url: http://localhost/lesson05/quiz03/2
+		@GetMapping("/2")
+		public String quiz03_2(Model model) {
 			
 			List<Map<String, Object>> membership = new ArrayList<>();
 
@@ -72,7 +73,7 @@ public class Lesson05Quiz02Controller {
 			
 			model.addAttribute("membership", membership);
 			
-			return "lesson05/quiz02-2";
+			return "lesson05/quiz03-2";
 		}
 	
 }

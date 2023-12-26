@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>HOT5</h1>
+		<h1>HOT 5</h1>
 		<table class="table text-center">
 			<thead>
 				<tr>
@@ -21,11 +21,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${musicRanking}" varStatus="status"
-				 begin="0" end="5" step="1" var="i">
+				<c:forEach items="${musicRanking}" var="rank" varStatus="status"
+				 begin="0" end="5" step="1">
 				<tr>
 					<td>${status.count}</td>
-					<td>${i}</td>
+					<td>${rank}</td>
 				</tr>
 				</c:forEach>
 			</tbody>
