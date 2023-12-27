@@ -21,7 +21,6 @@ public class Lesson04Quiz01Controller {
 	//http://localhost/lesson04/quiz01/add-seller-view
 	//판매자 추가화면
 	@GetMapping("/add-seller-view")
-	
 	public String addSellerView() {
 		return "lesson04/addSeller";
 	}

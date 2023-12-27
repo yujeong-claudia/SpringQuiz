@@ -14,6 +14,8 @@
 <body>
 <div class="container">
 		<h1>회원 정보 리스트</h1>
+		<img src="/img/sunny.jpg">
+		<%-- css는 링크태그 --%>
 		<table class="table text-center">
 			<thead>
 				<tr>
@@ -36,7 +38,7 @@
 								<span>${member.phoneNumber}</span>
 							</c:when>
 							<c:otherwise>
-								<span>유효하지 않은 전화번호</span>
+								유효하지 않은 전화번호
 							</c:otherwise>
 						</c:choose>
 					</td>
@@ -50,7 +52,7 @@
 									<span>${fn:substring(member.introduce, 0, 15)} ...</span>
 								</c:when>
 								<c:otherwise>
-									<span>${member.introduce}</span>
+									${member.introduce}
 								</c:otherwise>
 						</c:choose>
 					</td>
