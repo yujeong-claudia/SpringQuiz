@@ -22,6 +22,7 @@
 					<th>No</th>
 					<th>제목</th>
 					<th>주소</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,10 +31,56 @@
 					<td>${bookmark.id}</td>
 					<td>${bookmark.name}</td>
 					<td><a href="${bookmark.address}" target="_blank">${bookmark.address}</a></td>
+					<td>
+					<%-- 1) value로 값 넣기 --%>
+					<%-- <button type="button" class="del-btn btn btn-danger" value="${bookmark.id}">삭제</button>--%>
+					
+					<%-- 2) data로 값 넣기 --%>
+					<button type="button" class="del-btn btn btn-danger" data-bookmark-id="${bookmark.id}">삭제</button>
+					</td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	
+<script>
+	$(document).ready(function(){
+		//삭제 버튼 클릭
+		$('.del-btn').on('click', function(){
+			// 1) 버튼에 value에 담은 값 가져오기 let id = $(this).val();
+			//let id = $(this).attr("value");
+			//let id = e.target.value; 이거 안됐음..
+			
+			// 2) data 를 이용해서 값 가져오기
+			// 태그 영역: data-bookmark-id
+			// 스크립트 영역: .data('bookmark-id')
+			let id = $(this).data('bookmark-id')
+			//alert(id);
+	
+			$.ajax({
+				//request
+				type:"delete"
+				, url:"/lesson06/delete-bookmark"
+				, data:{"id":id}
+				
+				//response
+				, success:function(data){
+					if(data.code == 200) {
+						// 성공
+						location.reload(true); // 새로고침
+					} else if (data.code == 500) {
+						// 실패
+						alert(data.error_message);
+					}
+				}
+				, error:function(request, status, error) {
+					alert("삭제하는데 실패했습니다. 관리자에게 문의해주세요.");
+				}
+			});
+		});
+	});
+
+</script>	
 </body>
 </html>

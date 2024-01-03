@@ -30,4 +30,25 @@
 		FROM
 			`bookmark`
 	</select>
+	
+	<select id="selectBookmarkListByAddress" parameterType="String" resultType="com.quiz.lesson06.domain.Bookmark">
+		SELECT
+			`id`
+			,`name`
+			,`address`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`bookmark`
+		WHERE
+			`address` = #{address}		
+	</select>
+	
+	<delete id="deleteBookmarkById" parameterType="int">
+		DELETE
+		FROM
+			`bookmark`
+		WHERE
+			`id` = #{id}	
+	</delete>
 </mapper>

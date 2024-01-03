@@ -15,4 +15,9 @@ public interface BookmarkMapper {
 			@Param("address") String address);
 	
 	public List<Bookmark> selectBookmarkList();
+	
+	//input:address		output:List<Bookmark>
+	public List<Bookmark> selectBookmarkListByAddress(String address);
+	
+	public int deleteBookmarkById(int id);
 }

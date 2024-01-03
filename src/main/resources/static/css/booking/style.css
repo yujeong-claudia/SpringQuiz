@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+#wrap {
+	width:1200px;
+}
+nav {
+	background-color:#E3871F;
+}
+.contents {
+	min-height:500px;
+}
+footer {
+	height:100px;
+}
+
+.menu-font {
+	color:#fff;
+}
