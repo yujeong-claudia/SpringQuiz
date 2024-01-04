@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>예약하기</title>
+<title>예약 목록</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
 <%-- AJAX를 사용하려면 jquery 원본 필요 --%>
@@ -28,27 +28,31 @@
 	        </ul>
 	    </nav>
 	    <section class="contents py-4">
-	        <h2 class="text-center font-weight-bold m-4">예약 하기</h2>
-	        <div class="d-flex justify-content-center">
-	            <div class="booking-box">
-	                <div class="subject-text my-2 font-weight-bold">이름</div>
-	                <input type="text" class="form-control" id="name">
-	
-	                <div class="subject-text my-2 font-weight-bold">예약날짜</div>
-	                <input type="text" class="form-control" id="date">
-	
-	                <div class="subject-text my-2 font-weight-bold">숙박일수</div>
-	                <input type="text" class="form-control" id="day">
-	
-	                <div class="subject-text my-2 font-weight-bold">숙박인원</div>
-	                <input type="text" class="form-control" id="headcount">
-	
-	                <div class="subject-text my-2 font-weight-bold">전화번호</div>
-	                <input type="text" class="form-control" id="phoneNumber">
-	
-	                <button type="button" id="makeBookingBtn" class="btn btn-warning w-100 mt-3">예약하기</button>
-	            </div>
-			</div>
+	        <h2 class="text-center font-weight-bold m-4">예약 목록 보기</h2>
+	        <table class="table text-center">
+	            <thead>
+	                <tr>
+	                    <th>이름</th>
+	                    <th>예약날짜</th>
+	                    <th>숙박일수</th>
+	                    <th>숙박인원</th>
+	                    <th>전화번호</th>
+	                    <th>예약상태</th>
+	                    <th></th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                <tr>
+	                    <td></td>
+	                    <td></td>
+	                    <td></td>
+	                    <td></td>
+	                    <td></td>
+	                    <td></td>
+	                    <td></td>
+	                </tr>
+	            </tbody>
+	        </table>
 	    </section>
 	    <footer>
 	        <small class="text-secondary">
