@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,15 +44,29 @@
 	                </tr>
 	            </thead>
 	            <tbody>
+	            	<c:forEach items="${bookingList}" var="booking">
 	                <tr>
-	                    <td></td>
-	                    <td></td>
-	                    <td></td>
-	                    <td></td>
-	                    <td></td>
-	                    <td></td>
-	                    <td></td>
+	                    <td>${booking.name}</td>
+	                    <td><fmt:formatDate value="${booking.date}" pattern="yyyy년 M월 dd일" /></td>
+	                    <td>${booking.day}</td>
+	                    <td>${booking.headcount}</td>
+	                    <td>${booking.phoneNumber}</td>
+	                    <td>
+		                    <c:choose>
+		                    	<c:when test="${booking.state eq '대기중'}">
+		                    		<span class="text-info">${booking.state}</span>
+		                    	</c:when>
+		                    	<c:when test="${booking.state eq '확정'}">
+		                    		<span class="text-success">${booking.state}</span>
+		                    	</c:when>	
+		                    	<c:when test="${booking.state eq '취소'}">
+		                    		<span class="text-danger">${booking.state}</span>
+		                    	</c:when>
+		                    </c:choose>
+	                    </td>
+	                    <td><button type="button" class="del-btn btn btn-danger" data-booking-id="${booking.id}">삭제</button></td>
 	                </tr>
+	                </c:forEach>
 	            </tbody>
 	        </table>
 	    </section>
@@ -62,5 +78,37 @@
 	        </small>
 	    </footer>
 	</div>
+<script>
+	$(document).ready(function(){
+		// 삭제 버튼 클릭
+		$(".del-btn").on('click', function(){
+			//alert("클릭");
+			let id = $(this).data('booking-id');
+			//alert(id);
+			
+			$.ajax({
+				//request
+				type:"delete"
+				, url:"/booking/delete-booking"
+				, data:{"id":id}
+				
+				//response
+				, success:function(data){
+					// {"code":200, "result":"성공"}
+					if(data.result == "성공") {
+						alert("삭제되었습니다.");
+						location.reload(true);
+					} else {
+						// {"code":500, "error_message":"삭제하는데 실패했습니다."}
+						alert(data.error_message);
+					}
+				}
+				, error:function(request, status, error) {
+					alert("삭제하는데 실패했습니다. 관리자에게 문의해주세요.");
+				}
+			});
+		});
+	});
+</script>	
 </body>
 </html>

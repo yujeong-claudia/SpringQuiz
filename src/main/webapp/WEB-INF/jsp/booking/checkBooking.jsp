@@ -38,17 +38,17 @@
                 <div id="memberBox" class="mr-3 pt-3">
                 	<span class="reserve-confirm-text">예약 확인</span>
                     <div class="d-flex align-items-center justify-content-end mt-3">
-                        <span class="text-white mr-2">아이디</span>
-                        <input type="text" id="id" class="form-control col-9">
+                        <span class="text-white mr-2">이름</span>
+                        <input type="text" id="name" class="form-control col-9">
                     </div>
                     <div class="d-flex align-items-center justify-content-end mt-3">
-                        <span class="text-white mr-2">비밀번호</span>
-                        <input type="password" id="password" class="form-control col-9">
+                        <span class="text-white mr-2">전화번호</span>
+                        <input type="text" id="phoneNumber" class="form-control col-9">
                     </div>
 
                     <!-- 버튼 -->
                     <div class="d-flex justify-content-end mt-3">
-                        <button type="button" class="submit-btn btn btn-success">조회하기</button>
+                        <button type="button" id="checkBookingBtn" class="btn btn-success">조회하기</button>
                     </div>
                 </div>
             </section>
@@ -67,5 +67,50 @@
 	        </small>
 	    </footer>
 	</div>
+	
+<script>
+	$(document).ready(function() {
+		// 조회하기 버튼 클릭
+		$('#checkBookingBtn').on('click', function(){
+			//alert("클릭");
+			let name = $('#name').val().trim();
+			let phoneNumber = $('#phoneNumber').val().trim();
+			
+			// validation
+			if(!name){
+				alert("이름을 입력하세요.");
+				return;
+			}
+			
+			if(!phoneNumber){
+				alert("전화번호를 입력하세요.");
+				return;
+			}
+			
+			$.ajax({
+				//request
+				type:"post"
+				, url:"/booking/check-booking"
+				, data: {"name":name, "phoneNumber":phoneNumber}
+				
+				//response
+				, success:function(data){
+					if(data.code == 200) {
+						//alert("예약 되었습니다.");
+						
+						//이름: 신보람
+						//날짜: 20xx-01-04
+						//일수: 2
+						//인원:4
+						//상태:대기중
+					}
+				}
+				, error:function(request, status, error) {
+					alert("조회하는데 실패했습니다.")
+				}
+			});
+		});
+	});
+</script>	
 </body>
 </html>
