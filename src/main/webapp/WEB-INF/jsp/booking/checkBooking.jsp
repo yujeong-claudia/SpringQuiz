@@ -95,14 +95,16 @@
 				
 				//response
 				, success:function(data){
-					if(data.code == 200) {
-						//alert("예약 되었습니다.");
+					if(data.code == 200) { // 예약내역 있는 경우 
+						alert("이름:" + data.result.name 
+								+ "\n날짜:" + data.result.name.date.slice(0, 10)
+								+ "\n일수:" + data.result.name.day
+								+ "\n인원:" + data.result.name.headcount
+								+ "\n상태:" + data.result.name.state);
 						
-						//이름: 신보람
-						//날짜: 20xx-01-04
-						//일수: 2
-						//인원:4
-						//상태:대기중
+						//{"code":200, "result":{"name":"김유정", ....}}
+					} else if (data.code == 500) {
+						alert(data.error_message);
 					}
 				}
 				, error:function(request, status, error) {

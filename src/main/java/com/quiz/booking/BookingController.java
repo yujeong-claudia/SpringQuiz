@@ -93,17 +93,28 @@ public class BookingController {
 	// 예약 확인 - AJAX 요청
 	@ResponseBody
 	@PostMapping("/check-booking")
-	// 리턴타입 고민!
+	
 	public Map<String, Object> checkBooking(
 			@RequestParam("name") String name,
 			@RequestParam("phoneNumber") String phoneNumber) {
 		
-		//select db 
-		Booking booking = bookingBO.getBookingByNamePhoneNumber(name, phoneNumber);
+		
+		//{"code":200, "result":booking 객체}
+		//{"code":200, "result":{"name":"김유정", ....}}
 		
 		Map<String, Object> result = new HashMap<>();
-		result.put("code", 200);
-		result.put("result", "성공");
+		
+		Booking booking = bookingBO.getBookingByNamePhoneNumber(name, phoneNumber);
+		if (booking == null) {
+			//{"code":500, "error_message":"예약내역이 존재하지 않습니다."}
+			result.put("code", 500);
+			result.put("error_message", "예약내역이 존재하지 않습니다.");
+			
+		} else {
+			result.put("code", 200);
+			result.put("result", booking);
+		}
+		
 		
 		return result;
 	}
