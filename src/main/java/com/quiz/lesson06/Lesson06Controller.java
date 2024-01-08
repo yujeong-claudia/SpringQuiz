@@ -34,11 +34,11 @@ public class Lesson06Controller {
 	@ResponseBody
 	@PostMapping("/add-bookmark")
 	public Map<String, Object> addBookmark(
-			@RequestParam("name") String name,
-			@RequestParam("address") String address) {
+			@RequestParam("title") String title,
+			@RequestParam("url") String url) {
 		
 		// insert db
-		bookmarkBO.addBookmark(name, address);
+		bookmarkBO.addBookmark(title, url);
 		
 		// "{"code":200, "result":"성공"}"
 		Map<String, Object> result = new HashMap<>();
@@ -64,14 +64,14 @@ public class Lesson06Controller {
 	@ResponseBody
 	@PostMapping("/is-duplication-url")
 	public Map<String, Object> isDuplicationUrl(
-			@RequestParam("address") String address) {
+			@RequestParam("url") String url) {
 		
 		//db select
-		boolean isDuplication = bookmarkBO.isDuplicationUrl(address);
+		boolean isDuplication = bookmarkBO.isDuplicationUrl(url);
 		
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 200);
-		result.put("is_duplication", true);
+		result.put("is_duplication", isDuplication );
 		return result; // map -> JSON String
 	}
 	

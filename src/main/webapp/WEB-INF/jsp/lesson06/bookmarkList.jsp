@@ -30,7 +30,7 @@
 				<tr>
 					<td>${bookmark.id}</td>
 					<td>${bookmark.name}</td>
-					<td><a href="${bookmark.address}" target="_blank">${bookmark.address}</a></td>
+					<td><a href="${bookmark.url}" target="_blank">${bookmark.url }</a></td>
 					<td>
 					<%-- 1) value로 값 넣기 --%>
 					<%-- <button type="button" class="del-btn btn btn-danger" value="${bookmark.id}">삭제</button>--%>
@@ -47,10 +47,10 @@
 <script>
 	$(document).ready(function(){
 		//삭제 버튼 클릭
-		$('.del-btn').on('click', function(){
+		$('.del-btn').on('click', function(e ){
 			// 1) 버튼에 value에 담은 값 가져오기 let id = $(this).val();
 			//let id = $(this).attr("value");
-			//let id = e.target.value; 이거 안됐음..
+			//let id = e.target.value; 
 			
 			// 2) data 를 이용해서 값 가져오기
 			// 태그 영역: data-bookmark-id

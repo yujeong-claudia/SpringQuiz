@@ -11,13 +11,14 @@ import com.quiz.lesson06.domain.Bookmark;
 public interface BookmarkMapper {
 
 	public void insertBookmark(
-			@Param("name") String name, 
-			@Param("address") String address);
+			@Param("title") String title, 
+			@Param("url") String url);
 	
 	public List<Bookmark> selectBookmarkList();
 	
-	//input:address		output:List<Bookmark>
-	public List<Bookmark> selectBookmarkListByAddress(String address);
+	//input:url		output:List<Bookmark>
+	public List<Bookmark> selectBookmarkListByUrl(String url);
 	
 	public int deleteBookmarkById(int id);
 }
+  

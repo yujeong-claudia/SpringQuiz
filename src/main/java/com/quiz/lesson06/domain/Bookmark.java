@@ -5,10 +5,16 @@ import java.util.Date;
 public class Bookmark {
 	private int id;
 	private String name;
-	private String address;
+	private String url;
 	private Date createdAt;
 	private Date updatedAt;
 	
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	public int getId() {
 		return id;
 	}
@@ -21,12 +27,7 @@ public class Bookmark {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	
 	public Date getCreatedAt() {
 		return createdAt;
 	}

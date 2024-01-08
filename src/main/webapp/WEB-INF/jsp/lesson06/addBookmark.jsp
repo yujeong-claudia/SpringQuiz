@@ -16,14 +16,14 @@
 		<h1>즐겨찾기 추가하기</h1>
 		
 		<div class="form-group">
-			<label for="name">제목</label>
-			<input type="text" id="name" class="form-control">
+			<label for="title">제목</label>
+			<input type="text" id="title" class="form-control">
 		</div>
 
 		<div class="form-group">
-			<label for="address">URL 주소</label>
+			<label for="url">URL 주소</label>
 			<div class="form-inline">
-				<input type="text" id="address" class="form-control col-11">
+				<input type="text" id="url" class="form-control col-11">
 				<button type="button" id="duplicationBtn" class="btn btn-info">중복확인</button>
 			</div>
 			<small id="duplicationText" class="text-danger d-none">중복된 url 입니다.</small>
@@ -37,9 +37,9 @@
 	$(document).ready(function() {
 		// 중복확인
 		$("#duplicationBtn").on('click', function() {
-			//alert("중복확인");
-			let address = $("#address").val().trim();
-			if (!address) {
+			// alert("중복확인");
+			let url = $("#url").val().trim();
+			if (!url) {
 				alert("url을 입력하세요.");
 				return;
 			}
@@ -49,7 +49,7 @@
 				// request
 				type:"POST"
 				, url:"/lesson06/is-duplication-url"
-				, data:{"address":address}
+				, data:{"url":url}
 				
 				// response
 				, success:function(data) { // data: JSON String => dictionary
@@ -74,9 +74,9 @@
 		$('#addBtn').on('click', function() {
 			//alert("버튼 클릭");
 			// validation check
-			let name = $('#name').val().trim();
-			let address = $('#address').val().trim();
-			if (name == "") {
+			let title = $('#title').val().trim();
+			let url = $('#url').val().trim();
+			if (title == "") {
 				alert("제목을 입력하세요");
 				return;
 			}

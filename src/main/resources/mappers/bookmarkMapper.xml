@@ -7,14 +7,14 @@
 		INSERT INTO `bookmark`
 		(
 			`name`
-			,`address`
+			,`url`
 			,`createdAt`
 			,`updatedAt`
 		)
 		VALUES
 		(
-			#{name}
-			, #{address}
+			#{title}
+			, #{url}
 			, NOW()
 			, NOW()
 		)	
@@ -24,24 +24,24 @@
 		SELECT
 			`id`
 			,`name`
-			,`address`
+			,`url`
 			,`createdAt`
 			,`updatedAt`
 		FROM
 			`bookmark`
 	</select>
 	
-	<select id="selectBookmarkListByAddress" parameterType="String" resultType="com.quiz.lesson06.domain.Bookmark">
+	<select id="selectBookmarkListByUrl" parameterType="String" resultType="com.quiz.lesson06.domain.Bookmark">
 		SELECT
 			`id`
 			,`name`
-			,`address`
+			,`url`
 			,`createdAt`
 			,`updatedAt`
 		FROM
 			`bookmark`
 		WHERE
-			`address` = #{address}		
+			`url` = #{url}		
 	</select>
 	
 	<delete id="deleteBookmarkById" parameterType="int">
