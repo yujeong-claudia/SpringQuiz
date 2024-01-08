@@ -1,22 +1,13 @@
 package com.quiz.lesson07.repository;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.quiz.lesson07.entity.CompanyEntity;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
-
-@Transactional
-@Repository
-public class CompanyRespository {
-	// JPA, Spring Data JPA
-	@PersistenceContext
-	private EntityManager em;
+public interface CompanyRespository extends JpaRepository<CompanyEntity, Integer> {
+	// Spring data JPA
 	
-	public CompanyEntity save(CompanyEntity companyEntity) {
-		em.persist(companyEntity);
-		return companyEntity;
-	}
+	// 엔티티 객체 save (엔티티객체);
+	// Optional<엔티티객체> findById(id)
+	// void delete(엔티티객체)
 }

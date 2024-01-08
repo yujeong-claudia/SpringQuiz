@@ -1,6 +1,6 @@
 package com.quiz.lesson07.entity;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -19,10 +19,10 @@ import lombok.ToString;
 @ToString // 객체를 출력시 필드 값이 보여진다.
 @AllArgsConstructor // 파라미터가 모두 있는 생성자
 @NoArgsConstructor // 파라미터가 없는 생성자
-@Builder // setter 대신에 사용 
+@Builder(toBuilder = true) // setter 대신에 사용, 객체 필드 수정 가능
 @Getter
 @Table(name = "company")
-@Entity // 이 객체는 엔티티다. (JPA - DB)
+@Entity
 public class CompanyEntity {
 	
 	@Id
@@ -39,9 +39,9 @@ public class CompanyEntity {
 	
 	@UpdateTimestamp // createAt이 null이어도 현재 시간으로 저장
 	@Column(name = "createdAt", updatable = false) // 업데이트시 변경되지않도록 설정
-	private Date createdAt;
+	private ZonedDateTime createdAt;
 	
 	@UpdateTimestamp // createAt이 null이어도 현재 시간으로 저장
 	@Column(name = "updatedAt", updatable = false) // 업데이트시 변경되지않도록 설정
-	private Date updatedAt;
+	private ZonedDateTime updatedAt;
 }
