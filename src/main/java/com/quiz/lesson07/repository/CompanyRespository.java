@@ -11,3 +11,4 @@ public interface CompanyRespository extends JpaRepository<CompanyEntity, Integer
 	// Optional<엔티티객체> findById(id)
 	// void delete(엔티티객체)
 }
+ 

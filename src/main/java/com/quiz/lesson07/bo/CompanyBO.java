@@ -42,6 +42,6 @@ public class CompanyBO {
 	
 	public void deleteCompanyById(int id) {
 		Optional<CompanyEntity> companyOptional = companyRespository.findById(id);
-		companyOptional.ifPresent(s -> companyRespository.delete(s));
+		companyOptional.ifPresent(c -> companyRespository.delete(c));
 	}
 }
