@@ -23,10 +23,10 @@ public class Lesson07Quiz02RestController {
 	public RecruitEntity quiz02_1() {
 		return recruitRepository.findById(8).orElse(null);
 	}
-	
 	@GetMapping("/2")
 	public List<RecruitEntity> quiz02_2(
 			@RequestParam("companyId") int companyId) {
+		
 		return recruitRepository.findByCompanyId(companyId);
 	} //안됨
 	

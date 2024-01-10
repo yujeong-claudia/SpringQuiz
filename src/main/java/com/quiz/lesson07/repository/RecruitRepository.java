@@ -24,7 +24,7 @@ public interface RecruitRepository extends JpaRepository<RecruitEntity, Integer>
 	//7 
 	// nativeQuery db 직접 조회											// mysql문법이다.
 	@Query(value = "select * from `recruit` "
-			+ "where `deadline` > : deadline "
+			+ "where `deadline` > :deadline "
 			+ "and `salary` >= :salary "
 			+ "and `type`= :type "
 			+ "order by `salary` DESC", nativeQuery = true) 
