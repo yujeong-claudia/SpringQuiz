@@ -28,7 +28,7 @@ public class Lesson07Quiz02RestController {
 			@RequestParam("companyId") int companyId) {
 		
 		return recruitRepository.findByCompanyId(companyId);
-	} //안됨
+	} //검색할 때 ?companyId=1 꼭 붙여야됨! 안 붙이면 400에러뜬다
 	
 	@GetMapping("/3")
 	public List<RecruitEntity> quiz02_3() {
