@@ -23,15 +23,14 @@ public class BookingController {
 	
 	@Autowired
 	private BookingBO bookingBO;
-	
+
 	// 예약 목록 보기 화면
 	@GetMapping("/booking-list-view")
 	public String bookingListView(Model model) {
-		
 		// select DB
 		List<Booking> bookingList = bookingBO.getBookingList();
 		
-		// model 담기
+		// model에 담기
 		model.addAttribute("bookingList", bookingList);
 		
 		return "booking/bookingList";
@@ -41,9 +40,9 @@ public class BookingController {
 	@ResponseBody
 	@DeleteMapping("/delete-booking")
 	public Map<String, Object> deleteBooking(
-			@RequestParam("id")int id){
+			@RequestParam("id") int id) {
 		
-		//delete db
+		// delete db
 		int rowCount = bookingBO.deleteBookingById(id);
 		
 		Map<String, Object> result = new HashMap<>();
@@ -72,7 +71,7 @@ public class BookingController {
 			@RequestParam("date") String date,
 			@RequestParam("day") int day,
 			@RequestParam("headcount") int headcount,
-			@RequestParam("phoneNumber") String phoneNumber){
+			@RequestParam("phoneNumber") String phoneNumber) {
 		
 		// insert db
 		bookingBO.addBooking(name, date, day, headcount, phoneNumber);
@@ -80,7 +79,6 @@ public class BookingController {
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 200);
 		result.put("result", "성공");
-		
 		return result;
 	}
 
@@ -93,30 +91,24 @@ public class BookingController {
 	// 예약 확인 - AJAX 요청
 	@ResponseBody
 	@PostMapping("/check-booking")
-	
 	public Map<String, Object> checkBooking(
 			@RequestParam("name") String name,
 			@RequestParam("phoneNumber") String phoneNumber) {
 		
-		
-		//{"code":200, "result":booking 객체}
-		//{"code":200, "result":{"name":"김유정", ....}}
-		
+		// {"code":200, "result":booking 객체}
+		// {"code":200, "result":{"name":"신보람", ....}}
 		Map<String, Object> result = new HashMap<>();
 		
 		Booking booking = bookingBO.getBookingByNamePhoneNumber(name, phoneNumber);
 		if (booking == null) {
-			//{"code":500, "error_message":"예약내역이 존재하지 않습니다."}
-			result.put("code", 500);
+			// {"code":500, "error_message":"예약내역이 존재하지 않습니다."}
+			result.put("code", 500); // 에러
 			result.put("error_message", "예약내역이 존재하지 않습니다.");
-			
 		} else {
 			result.put("code", 200);
 			result.put("result", booking);
 		}
 		
-		
 		return result;
 	}
-	
 }

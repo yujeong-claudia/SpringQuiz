@@ -17,7 +17,7 @@
 <body>
 	<div id="wrap" class="container">
 	    <header class="d-flex justify-content-center align-items-center">
-	        <div class="display-4">통나무 팬션</div>
+	        <div class="display-4">통나무 펜션</div>
 	    </header>
 	    <nav>
 	        <ul class="nav nav-fill">
@@ -28,7 +28,7 @@
 	        </ul>
 	    </nav>
 	    <section class="banner bg-info">
-            <img id="bannerImage" src="/img/test06_banner1.jpg" alt="banner" width="1110" height="500">
+            <img id="bannerImage" src="/img/banner1.jpg" alt="banner" width="1110" height="500">
         </section>
         <section class="reserve bg-primary d-flex">
             <section class="real-time-reserved col-4 d-flex justify-content-center align-items-center">
@@ -63,7 +63,7 @@
 	        <small class="text-secondary">
 	            제주특별자치도 제주시 애월읍<br>
 	            사업자등록번호: 111-22-255222 / 농어촌민박사업자지정 / 대표:김통목<br>
-	            Copyright 2024 tongnamu. All right reserved.
+	            Copyright 20XX tongnamu. All right reserved.
 	        </small>
 	    </footer>
 	</div>
@@ -71,48 +71,58 @@
 <script>
 	$(document).ready(function() {
 		// 조회하기 버튼 클릭
-		$('#checkBookingBtn').on('click', function(){
+		$('#checkBookingBtn').on('click', function() {
 			//alert("클릭");
 			let name = $('#name').val().trim();
 			let phoneNumber = $('#phoneNumber').val().trim();
 			
-			// validation
-			if(!name){
+			if (!name) {
 				alert("이름을 입력하세요.");
 				return;
 			}
 			
-			if(!phoneNumber){
+			if (!phoneNumber) {
 				alert("전화번호를 입력하세요.");
 				return;
 			}
 			
 			$.ajax({
-				//request
+				// request
 				type:"post"
 				, url:"/booking/check-booking"
-				, data: {"name":name, "phoneNumber":phoneNumber}
+				, data:{"name":name, "phoneNumber":phoneNumber}
 				
-				//response
-				, success:function(data){
-					if(data.code == 200) { // 예약내역 있는 경우 
+				// response
+				, success:function(data) {
+					// {"code":200, "result":{"name":"신보람", ....}}
+					if (data.code == 200) { // 예약 있는 경우 
 						alert("이름:" + data.result.name 
-								+ "\n날짜:" + data.result.name.date.slice(0, 10)
-								+ "\n일수:" + data.result.name.day
-								+ "\n인원:" + data.result.name.headcount
-								+ "\n상태:" + data.result.name.state);
-						
-						//{"code":200, "result":{"name":"김유정", ....}}
+								+ "\n날짜:" + data.result.date.slice(0, 10)
+								+ "\n일수:" + data.result.day
+								+ "\n인원:" + data.result.headcount
+								+ "\n상태:" + data.result.state);
 					} else if (data.code == 500) {
 						alert(data.error_message);
 					}
 				}
 				, error:function(request, status, error) {
-					alert("조회하는데 실패했습니다.")
+					alert("조회하는데 실패했습니다.");
 				}
 			});
 		});
+		
+		// 배너
+		let bannerSrcArr = ['/img/test06_banner1.jpg', '/img/test06_banner2.jpg', '/img/test06_banner3.jpg', '/img/test06_banner4.jpg'];
+        let currentIndex = 0;
+        setInterval(function() {
+            $('#bannerImage').attr('src', bannerSrcArr[currentIndex]);
+            currentIndex++;
+
+            if (currentIndex > bannerSrcArr.length) { // 인덱스 값이 배열의 크기를 넘으면 0으로(처음 이미지) 세팅
+                currentIndex = 0;
+            }
+        }, 3000); // 3초에 한번씩 함수 실행
 	});
-</script>	
+</script>
 </body>
 </html>

@@ -71,7 +71,7 @@ public class Lesson06Controller {
 		
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 200);
-		result.put("is_duplication", isDuplication );
+		result.put("is_duplication", isDuplication);
 		return result; // map -> JSON String
 	}
 	

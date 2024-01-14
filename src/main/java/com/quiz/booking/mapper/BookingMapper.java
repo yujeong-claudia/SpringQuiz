@@ -9,7 +9,7 @@ import com.quiz.booking.domain.Booking;
 
 @Mapper
 public interface BookingMapper {
-	
+
 	public List<Booking> selectBookingList();
 	
 	public int deleteBookingById(int id);
@@ -17,11 +17,11 @@ public interface BookingMapper {
 	public void insertBooking(
 			@Param("name") String name, 
 			@Param("date") String date, 
-			@Param("day") int day, 
+			@Param("day") int day,
 			@Param("headcount") int headcount, 
 			@Param("phoneNumber") String phoneNumber);
 	
-	// input:name,phoneNumber	output:List<Booking>
+	// input: 이름, 전화번호    output: List<Booking>
 	public List<Booking> selectBookingListByNamePhoneNumber(
 			@Param("name") String name, 
 			@Param("phoneNumber") String phoneNumber);

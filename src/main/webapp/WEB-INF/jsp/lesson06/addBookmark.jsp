@@ -37,7 +37,7 @@
 	$(document).ready(function() {
 		// 중복확인
 		$("#duplicationBtn").on('click', function() {
-			// alert("중복확인");
+			//alert("중복확인");
 			let url = $("#url").val().trim();
 			if (!url) {
 				alert("url을 입력하세요.");

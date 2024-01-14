@@ -42,6 +42,6 @@ public class CompanyEntity {
 	private ZonedDateTime createdAt;
 	
 	@UpdateTimestamp // createAt이 null이어도 현재 시간으로 저장
-	@Column(name = "updatedAt", updatable = false) // 업데이트시 변경되지않도록 설정
+	@Column(name = "updatedAt") // 업데이트시 변경되지않도록 설정
 	private ZonedDateTime updatedAt;
 }
